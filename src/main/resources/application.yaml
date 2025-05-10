@@ -1,0 +1,53 @@
+logging:
+  level:
+    org.springframework.ai: trace
+    org.springframework.ai.chat.client.advisor: trace
+    org.springframework.ai.mcp: trace
+
+spring:
+  application:
+    name: demo
+  ai:
+    chat:
+      client:
+        observations:
+          include-input: true
+    mcp:
+      client:
+        enabled: true
+        name: mcp-client
+        version: 1.0.0
+        request-timeout: 30s
+        type: SYNC
+        sse:
+          connections:
+            dateTime:
+              url: http://localhost:8081
+        stdio:
+          #          servers-configuration: classpath:./mcp-servers.json
+          connections:
+            filesystem:
+              command: "C:\\Program Files\\nodejs\\npx.cmd"
+              args:
+                - "-y"
+                - "@modelcontextprotocol/server-filesystem"
+                - "C:\\Users\\alant\\Desktop"
+            postgres:
+              #              command: "C:\\Program Files\\nodejs\\npx.cmd"
+              #              args:
+              #                - "-y"
+              #                - "@modelcontextprotocol/server-postgres"
+              #                - "postgresql://user:password@host.docker.internal:5432/mydb"
+              command: "docker"
+              args:
+                - "run"
+                - "-i"
+                - "--rm"
+                - "mcp/postgres"
+                - "postgresql://user:password@host.docker.internal:5432/mydb"
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: https://api.groq.com/openai
+      chat:
+        options:
+          model: meta-llama/llama-4-scout-17b-16e-instruct
