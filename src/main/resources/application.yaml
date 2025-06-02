@@ -21,30 +21,30 @@ spring:
         type: SYNC
         sse:
           connections:
-            dateTime:
+            my-spotify-sse:
               url: http://localhost:8081
-        stdio:
+#        stdio:
           #          servers-configuration: classpath:./mcp-servers.json
-          connections:
-            filesystem:
-              command: "C:\\Program Files\\nodejs\\npx.cmd"
-              args:
-                - "-y"
-                - "@modelcontextprotocol/server-filesystem"
-                - "C:\\Users\\alant\\Desktop"
-            postgres:
+#          connections:
+#            filesystem:
+#              command: "C:\\Program Files\\nodejs\\npx.cmd"
+#              args:
+#                - "-y"
+#                - "@modelcontextprotocol/server-filesystem"
+#                - "C:\\Users\\alant\\Desktop"
+#            postgres:
               #              command: "C:\\Program Files\\nodejs\\npx.cmd"
               #              args:
               #                - "-y"
               #                - "@modelcontextprotocol/server-postgres"
               #                - "postgresql://user:password@host.docker.internal:5432/mydb"
-              command: "docker"
-              args:
-                - "run"
-                - "-i"
-                - "--rm"
-                - "mcp/postgres"
-                - "postgresql://user:password@host.docker.internal:5432/mydb"
+#              command: "docker"
+#              args:
+#                - "run"
+#                - "-i"
+#                - "--rm"
+#                - "mcp/postgres"
+#                - "postgresql://user:password@host.docker.internal:5432/mydb"
     openai:
       api-key: ${OPENAI_API_KEY}
       base-url: https://api.groq.com/openai

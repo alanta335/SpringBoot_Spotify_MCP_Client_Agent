@@ -5,7 +5,7 @@ import com.example.demo.model.response.QueryResultResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.tool.ToolCallback;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,32 +18,22 @@ public class ChatController {
 
     private final List<ToolCallback> toolCallbackProvider;
 
-    @GetMapping("/chat")
+    @PostMapping("/chat")
     public QueryResultResponseDto chat(@RequestBody ChatRequestDto requestDto) {
         try {
-            return chatClient
+            return new QueryResultResponseDto(chatClient
                     .prompt()
                     .system("""
-                            The database contains schema called mydb.
-                            Use the schema data provided.
-                            
-                            CREATE TABLE mydb.users (
-                            	id int4 NOT NULL,
-                            	"name" varchar(100) NULL,
-                            	email varchar(100) NULL,
-                            	address varchar(255) NULL,
-                            	created timestamp NULL,
-                            	last_updated timestamp NULL,
-                            	CONSTRAINT users_email_key UNIQUE (email),
-                            	CONSTRAINT users_pkey PRIMARY KEY (id)
-                            );
-                            
-                            This is the schema of the users table which contains the data for users.
+                            You are a helpful assistant that manages music playlists.
+                            Use the provided tools to fetch and control playlists.
+                            Respond naturally in conversation format to the user's requests based on the outcomes of tool executions.
+                            Do not output any code blocks or markdown or with html tags.
+                            If you cannot answer the question, respond with "I don't know".
                             """)
                     .user(requestDto.prompt())
                     .tools(toolCallbackProvider)
                     .call()
-                    .entity(QueryResultResponseDto.class);
+                    .content());
         } catch (Exception e) {
             return new QueryResultResponseDto("Error = " + e.getMessage());
         }
