@@ -7,7 +7,16 @@ logging:
 spring:
   application:
     name: demo
+  mvc:
+    problemdetails:
+      enabled: true
   ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      base-url: https://api.groq.com/openai
+      chat:
+        options:
+          model: meta-llama/llama-4-scout-17b-16e-instruct
     chat:
       client:
         observations:
@@ -23,31 +32,26 @@ spring:
           connections:
             my-spotify-sse:
               url: http://localhost:8081
-#        stdio:
-          #          servers-configuration: classpath:./mcp-servers.json
-#          connections:
-#            filesystem:
-#              command: "C:\\Program Files\\nodejs\\npx.cmd"
-#              args:
-#                - "-y"
-#                - "@modelcontextprotocol/server-filesystem"
-#                - "C:\\Users\\alant\\Desktop"
-#            postgres:
+              #        stdio:
+              #          servers-configuration: classpath:./mcp-servers.json
+              #          connections:
+              #            filesystem:
+              #              command: "C:\\Program Files\\nodejs\\npx.cmd"
+              #              args:
+              #                - "-y"
+              #                - "@modelcontextprotocol/server-filesystem"
+              #                - "C:\\Users\\alant\\Desktop"
+              #            postgres:
               #              command: "C:\\Program Files\\nodejs\\npx.cmd"
               #              args:
               #                - "-y"
               #                - "@modelcontextprotocol/server-postgres"
               #                - "postgresql://user:password@host.docker.internal:5432/mydb"
-#              command: "docker"
-#              args:
-#                - "run"
-#                - "-i"
-#                - "--rm"
-#                - "mcp/postgres"
-#                - "postgresql://user:password@host.docker.internal:5432/mydb"
-    openai:
-      api-key: ${OPENAI_API_KEY}
-      base-url: https://api.groq.com/openai
-      chat:
-        options:
-          model: meta-llama/llama-4-scout-17b-16e-instruct
+    #              command: "docker"
+    #              args:
+    #                - "run"
+    #                - "-i"
+    #                - "--rm"
+    #                - "mcp/postgres"
+    #                - "postgresql://user:password@host.docker.internal:5432/mydb"
+
