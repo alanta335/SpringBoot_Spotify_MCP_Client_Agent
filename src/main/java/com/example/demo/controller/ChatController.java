@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.LLMServiceException;
 import com.example.demo.model.request.ChatRequestDto;
 import com.example.demo.model.response.QueryResultResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class ChatController {
                     .call()
                     .content());
         } catch (Exception e) {
-            return new QueryResultResponseDto("Error = " + e.getMessage());
+            throw new LLMServiceException(e.getMessage());
         }
     }
 }
