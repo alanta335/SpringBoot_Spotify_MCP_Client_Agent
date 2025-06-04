@@ -31,7 +31,7 @@ public class ChatController {
                             Do not output any code blocks or markdown or with html tags.
                             If you cannot answer the question, respond with "I don't know".
                             """)
-                    .user(requestDto.prompt())
+                    .user(requestDto.prompt()+" <API_KEY>"+requestDto.apiKey()+"</API_KEY>")
                     .tools(toolCallbackProvider)
                     .call()
                     .content());
