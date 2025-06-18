@@ -27,7 +27,6 @@ public class ChatController {
                             Use the provided tools to fetch and control playlists.
                             Respond naturally in conversation format to the user's requests based on the outcomes of tool executions.
                             Do not output any code blocks or markdown or with html tags.
-                            If you cannot answer the question, respond with "I don't know".
                             """)
                     .user(requestDto.prompt())
                     .toolCallbacks(toolCallbackProvider.getToolCallbacks())
