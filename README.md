@@ -1,14 +1,17 @@
 # 🌟 Spring Boot MCP Client
 
-This project is a **Spring Boot** application designed as an **MCP (Model Context Protocol) client**. It was created for **learning** and **experimentation** purposes.
+This project is a **Spring Boot** application designed as a **Spotify MCP (Model Context Protocol) client agent**. It
+was created for **integration with Spotify's MCP services**.
 
 ---
 
 ## ✨ Features
 
-- 🚀 Implements **MCP client** functionality.
+- 🚀 Implements **MCP client** functionality for chat-based interactions.
 - 🛠️ Demonstrates the use of **Spring Boot** for building robust applications.
 - 📦 Includes configurations, controllers, and models for handling chat requests and responses.
+- 🔄 Centralized exception handling for improved error management.
+- 🗂️ Externalized configuration for MCP servers and application settings.
 
 ---
 
@@ -20,90 +23,88 @@ LICENSE
 mvnw
 mvnw.cmd
 pom.xml
+README.md
 src/
-    main/
-        java/
-            com/
-                example/
-                    demo/
-                        DemoApplication.java
-                        config/
-                            ChatClientConfig.java
-                            MCPConfig.java
-                        controller/
-                            ChatController.java
-                        model/
-                            request/
-                                ChatRequestDto.java
-                            response/
-                                QueryResultResponseDto.java
-        resources/
-            application.yaml
-            mcp-servers.json
-            static/
-            templates/
-    test/
-        java/
-            com/
-                example/
-                    demo/
-                        DemoApplicationTests.java
+  main/
+    java/
+      com/
+        example/
+          demo/
+            DemoApplication.java
+            config/
+              ChatClientConfig.java
+              MCPConfig.java
+              WebConfig.java
+            controller/
+              ChatController.java
+            exception/
+              GlobalExceptionHandler.java
+              LLMServiceException.java
+            model/
+              request/
+                ChatRequestDto.java
+              response/
+                QueryResultResponseDto.java
+            service/
+    resources/
+      application.yaml
+      mcp-servers.json
+      static/
+      templates/
+  test/
+    java/
+      com/
+        example/
+          demo/
+            DemoApplicationTests.java
 ```
-
----
-
-## 🛠️ Prerequisites
-
-- **Java 17** or higher
-- **Maven 3.8** or higher
 
 ---
 
 ## 🚀 Getting Started
 
 1. **Clone the repository:**
-
-   ```bash
-   git clone <repository-url>
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```bash
+   ```sh
+   git clone <repo-url>
    cd mcp-client
    ```
-
-3. **Build the project using Maven:**
-
-   ```bash
+2. **Build the project:**
+   ```sh
    ./mvnw clean install
    ```
-
-4. **Run the application:**
-
-   ```bash
+3. **Run the application:**
+   ```sh
    ./mvnw spring-boot:run
    ```
-
-5. **Access the application:**
-
-   Open your browser and navigate to `http://localhost:8080`.
 
 ---
 
 ## ⚙️ Configuration
 
-- The application configuration is located in `src/main/resources/application.yaml`.
-- MCP server details are specified in `src/main/resources/mcp-servers.json`.
+- **application.yaml**: Main Spring Boot configuration.
+- **mcp-servers.json**: List of MCP server endpoints.
 
 ---
 
-## 📜 License
+## 📬 Usage
 
-This project is licensed under the terms of the [LICENSE](LICENSE) file.
+- The main chat endpoint is available via `ChatController`.
+- Customize MCP server settings in `mcp-servers.json`.
 
 ---
 
-## 🙏 Acknowledgments
+## 🧩 Main Components
 
-This project was created as a **learning exercise** to explore **Spring Boot** and **MCP client development**.
+- `controller/ChatController.java`: Handles chat requests.
+- `config/`: Application and client configuration.
+- `exception/`: Custom exception handling.
+- `model/request/ChatRequestDto.java`: Chat request model.
+- `model/response/QueryResultResponseDto.java`: Chat response model.
+
+---
+
+## 📝 License
+
+This project is licensed under the terms of the LICENSE file.
+
+---
