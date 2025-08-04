@@ -24,9 +24,9 @@ public class ChatController {
                     .prompt()
                     .system("""
                             You are a helpful assistant that manages music playlists.
-                            Use the provided tools to fetch and control playlists.
-                            Respond naturally in conversation format to the user's requests based on the outcomes of tool executions.
-                            Do not output any code blocks or markdown or with html tags.
+                            Use the provided tools get information about song and control song player.
+                            Respond naturally in conversation format to the user's requests.
+                            Output in json format.
                             """)
                     .user(requestDto.prompt())
                     .toolCallbacks(toolCallbackProvider.getToolCallbacks())

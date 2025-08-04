@@ -1,8 +1,9 @@
-logging:
-  level:
-    org.springframework.ai: trace
-    org.springframework.ai.chat.client.advisor: trace
-    org.springframework.ai.mcp: trace
+#logging:
+#  level:
+#    org.springframework.ai: trace
+#    org.springframework.ai.chat.client.advisor: trace
+#    org.springframework.ai.mcp: trace
+#    root: trace
 
 spring:
   application:
@@ -20,7 +21,7 @@ spring:
     chat:
       client:
         observations:
-          include-input: true
+          log-prompt: true
     mcp:
       client:
         enabled: true
@@ -28,6 +29,8 @@ spring:
         version: 1.0.0
         request-timeout: 30s
         type: SYNC
+        toolcallback:
+          enabled: true
         sse:
           connections:
             my-spotify-sse:
