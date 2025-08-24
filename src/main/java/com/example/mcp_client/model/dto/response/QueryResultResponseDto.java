@@ -1,4 +1,4 @@
-package com.example.mcp_client.model.response;
+package com.example.mcp_client.model.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 

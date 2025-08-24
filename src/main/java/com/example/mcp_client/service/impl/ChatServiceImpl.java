@@ -3,8 +3,9 @@ package com.example.mcp_client.service.impl;
 import com.example.mcp_client.exception.LLMServiceException;
 import com.example.mcp_client.model.context.UserDataModel;
 import com.example.mcp_client.model.context.UserThreadLocalHolder;
-import com.example.mcp_client.model.request.ChatRequestDto;
-import com.example.mcp_client.model.response.QueryResultResponseDto;
+import com.example.mcp_client.model.dto.request.ChatRequestDto;
+import com.example.mcp_client.model.dto.request.common.GenricRequestDto;
+import com.example.mcp_client.model.dto.response.QueryResultResponseDto;
 import com.example.mcp_client.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,9 @@ public class ChatServiceImpl implements ChatService {
     private final ChatClient chatClient;
     private final SyncMcpToolCallbackProvider toolCallbackProvider;
 
-    public QueryResultResponseDto getChatResponse(ChatRequestDto requestDto) {
+    public QueryResultResponseDto getChatResponse(GenricRequestDto<ChatRequestDto> requestDto) {
         try {
-            final UserDataModel userData = new UserDataModel(requestDto.userName(), requestDto.userId(), requestDto.apiKey());
+            final UserDataModel userData = new UserDataModel(requestDto.userData().userName(), requestDto.userData().userId(), requestDto.userData().apiKey());
             UserThreadLocalHolder.setUserHeader(userData);
             return new QueryResultResponseDto(chatClient
                     .prompt()
@@ -31,7 +32,7 @@ public class ChatServiceImpl implements ChatService {
                             Respond naturally in conversation format to the user's requests.
                             Output in json format.
                             """)
-                    .user(requestDto.prompt())
+                    .user(requestDto.data().prompt())
                     .toolCallbacks(toolCallbackProvider.getToolCallbacks())
                     .call()
                     .content());

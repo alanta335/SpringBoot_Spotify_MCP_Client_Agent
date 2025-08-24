@@ -1,7 +1,8 @@
 package com.example.mcp_client.controller;
 
-import com.example.mcp_client.model.request.ChatRequestDto;
-import com.example.mcp_client.model.response.QueryResultResponseDto;
+import com.example.mcp_client.model.dto.request.ChatRequestDto;
+import com.example.mcp_client.model.dto.request.common.GenricRequestDto;
+import com.example.mcp_client.model.dto.response.QueryResultResponseDto;
 import com.example.mcp_client.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ public class ChatController {
     private final ChatService chatService;
 
     @PostMapping("/chat")
-    public QueryResultResponseDto chat(@RequestBody ChatRequestDto requestDto) {
+    public QueryResultResponseDto chat(@RequestBody GenricRequestDto<ChatRequestDto> requestDto) {
         return chatService.getChatResponse(requestDto);
     }
 }
