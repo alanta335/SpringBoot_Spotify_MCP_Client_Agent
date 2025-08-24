@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.mcp_client.config;
 
 import io.modelcontextprotocol.client.McpSyncClient;
 import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;

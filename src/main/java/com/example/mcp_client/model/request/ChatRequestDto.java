@@ -1,4 +1,4 @@
-package com.example.demo.model.request;
+package com.example.mcp_client.model.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

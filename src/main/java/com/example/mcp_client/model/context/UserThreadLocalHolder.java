@@ -1,4 +1,4 @@
-package com.example.demo.model.context;
+package com.example.mcp_client.model.context;
 
 public class UserThreadLocalHolder {
     private static final ThreadLocal<UserDataModel> userHeaderData = new ThreadLocal<>();

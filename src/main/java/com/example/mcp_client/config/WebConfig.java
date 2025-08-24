@@ -1,7 +1,7 @@
-package com.example.demo.config;
+package com.example.mcp_client.config;
 
-import com.example.demo.model.context.UserDataModel;
-import com.example.demo.model.context.UserThreadLocalHolder;
+import com.example.mcp_client.model.context.UserDataModel;
+import com.example.mcp_client.model.context.UserThreadLocalHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

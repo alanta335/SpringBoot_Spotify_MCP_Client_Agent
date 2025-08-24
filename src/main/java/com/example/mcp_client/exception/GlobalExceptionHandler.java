@@ -1,4 +1,4 @@
-package com.example.demo.exception;
+package com.example.mcp_client.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

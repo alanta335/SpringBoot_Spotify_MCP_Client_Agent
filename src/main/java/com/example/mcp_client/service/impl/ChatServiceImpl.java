@@ -1,11 +1,11 @@
-package com.example.demo.service.impl;
+package com.example.mcp_client.service.impl;
 
-import com.example.demo.exception.LLMServiceException;
-import com.example.demo.model.context.UserDataModel;
-import com.example.demo.model.context.UserThreadLocalHolder;
-import com.example.demo.model.request.ChatRequestDto;
-import com.example.demo.model.response.QueryResultResponseDto;
-import com.example.demo.service.ChatService;
+import com.example.mcp_client.exception.LLMServiceException;
+import com.example.mcp_client.model.context.UserDataModel;
+import com.example.mcp_client.model.context.UserThreadLocalHolder;
+import com.example.mcp_client.model.request.ChatRequestDto;
+import com.example.mcp_client.model.response.QueryResultResponseDto;
+import com.example.mcp_client.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;

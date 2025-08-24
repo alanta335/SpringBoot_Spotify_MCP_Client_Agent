@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.example.mcp_client.controller;
 
-import com.example.demo.model.request.ChatRequestDto;
-import com.example.demo.model.response.QueryResultResponseDto;
-import com.example.demo.service.ChatService;
+import com.example.mcp_client.model.request.ChatRequestDto;
+import com.example.mcp_client.model.response.QueryResultResponseDto;
+import com.example.mcp_client.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

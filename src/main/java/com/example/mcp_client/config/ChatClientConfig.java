@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.mcp_client.config;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
